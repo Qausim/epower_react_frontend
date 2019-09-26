@@ -1,1 +1,1 @@
-export default headerTitle => ({ type: "SET_APP_HEADER", headerTitle });
+export default headerContent => ({ type: "SET_APP_HEADER", headerContent });

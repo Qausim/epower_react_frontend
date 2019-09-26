@@ -1,0 +1,17 @@
+.post-details-wrapper {
+  width: 80%;
+  max-width: 800px;
+}
+
+.post-details-wrapper h3,
+.post-details-wrapper h2 {
+  margin-top: 20px;
+}
+
+.post-details-wrapper p {
+  margin-top: 20px;
+}
+
+.post-details-wrapper img {
+  width: 100%;
+}

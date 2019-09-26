@@ -2,38 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import PostItem from "./PostItem";
-import placeholderImage from "../../assets/post-item-placeholder-image.jpeg";
 import "../../styles/post-list.css";
 import setAppHeader from "../../store/actions/setAppHeader";
+import fetchPosts from "../../store/actions/fetchPosts";
 
 class PostList extends Component {
-  state = { posts: [] };
-
   componentDidMount() {
     // Fetch posts here
-    this.props.setAppHeader("Epower Blog");
-    const posts = new Array(6).fill(0).map((el, ind) => {
-      const title = { rendered: "Lorem ipsum dolor" };
-      const slug = title.rendered
-        .toLowerCase()
-        .split(" ")
-        .join("-");
-      return {
-        id: ind,
-        featured_image_thumbnail: placeholderImage,
-        title,
-        slug,
-        excerpt:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum iste unde modi eligendi eius excepturi?"
-      };
-    });
-
-    this.setState({ posts });
+    this.props.setAppHeader({ title: "Epower Blog", published: "" });
+    this.props.fetchPosts();
   }
 
   render() {
     // Return template here
-    const { posts } = this.state;
+    const { posts } = this.props;
     const postList = posts.map(post => <PostItem key={post.id} post={post} />);
     const template = postList.length ? (
       postList
@@ -45,12 +27,21 @@ class PostList extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setAppHeader(title) {
-    dispatch(setAppHeader(title));
+  setAppHeader(headerContent) {
+    dispatch(setAppHeader(headerContent));
+  },
+
+  fetchPosts() {
+    dispatch(fetchPosts());
   }
 });
 
+const mapStateToProps = (state, ownProps) => ({
+  posts: state.posts,
+  ...ownProps
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PostList);
