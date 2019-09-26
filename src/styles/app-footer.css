@@ -1,0 +1,11 @@
+.app-footer {
+  background: var(--primary-color);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-top: 100px;
+  position: relative;
+  bottom: 0px;
+}

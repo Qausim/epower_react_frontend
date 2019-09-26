@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import PostItem from "./PostItem";
 import placeholderImage from "../../assets/post-item-placeholder-image.jpeg";
 import "../../styles/post-list.css";
+import setAppHeader from "../../store/actions/setAppHeader";
 
-export default class PostList extends Component {
+class PostList extends Component {
   state = { posts: [] };
 
   componentDidMount() {
     // Fetch posts here
+    this.props.setAppHeader("Epower Blog");
     const posts = new Array(6).fill(0).map((el, ind) => {
       const title = { rendered: "Lorem ipsum dolor" };
       const slug = title.rendered
@@ -40,3 +43,14 @@ export default class PostList extends Component {
     return <div className="post-list">{template}</div>;
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  setAppHeader(title) {
+    dispatch(setAppHeader(title));
+  }
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(PostList);
