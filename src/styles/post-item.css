@@ -1,0 +1,29 @@
+.post-item-wrapper {
+  box-shadow: 2px 0px 4px #cccccccc, -2px 0px 4px #cccccccc,
+    0px 24px 28px #cccccccc;
+}
+
+.post-item-wrapper .img-wrapper {
+  width: 100%;
+  height: 60%;
+}
+
+.post-item-wrapper .img-wrapper img {
+  width: 100%;
+}
+
+.post-item-wrapper .text-wrapper {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px 32px 32px 32px;
+}
+
+.post-item-wrapper .title {
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.post-item-wrapper .excerpt {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  color: #333;
+}
