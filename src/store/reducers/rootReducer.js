@@ -4,7 +4,8 @@ const initState = {
     published: ""
   },
   posts: [],
-  currentPost: null
+  currentPost: null,
+  currentPage: 1
 };
 
 export default (state = initState, action) => {
@@ -15,6 +16,10 @@ export default (state = initState, action) => {
       return { ...state, posts: action.posts };
     case "SET_CURRENT_POST":
       return { ...state, currentPost: action.currentPost };
+    case "INCREMENT_PAGE_NUMBER":
+      return { ...state, currentPage: ++state.currentPage };
+    case "DECREMENT_PAGE_NUMBER":
+      return { ...state, currentPage: --state.currentPage };
     default:
       return state;
   }

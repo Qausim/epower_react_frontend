@@ -11,9 +11,9 @@ const PostItem = props => {
         <div className="img-wrapper">
           <img src={post.featured_image_thumbnail} alt={post.title.rendered} />
         </div>
-        <div className="text-wrapper">
+        <div className="text-wrapper text--aligned-center">
           <h2 className="title">{post.title.rendered}</h2>
-          <p className="excerpt">{post.excerpt}</p>
+          <p className="excerpt">{post.excerpt.rendered}</p>
         </div>
       </div>
     </Link>
