@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import PostItem from "./PostItem";
 import "../../styles/post-list.css";
 import setAppHeader from "../../store/actions/setAppHeader";
-import fetchPosts from "../../store/actions/fetchPosts";
+import setPosts from "../../store/actions/setPosts";
+import fetchPosts from "../../store/middlewares/fetchPosts";
+import Paginator from "./Paginator";
 
 class PostList extends Component {
   componentDidMount() {
@@ -16,7 +18,10 @@ class PostList extends Component {
   render() {
     // Return template here
     const { posts } = this.props;
-    const postList = posts.map(post => <PostItem key={post.id} post={post} />);
+    const postList = posts
+      ? posts.map(post => <PostItem key={post.id} post={post} />)
+      : [];
+    console.log(postList);
     const template = postList.length ? (
       postList
     ) : (
@@ -29,6 +34,10 @@ class PostList extends Component {
 const mapDispatchToProps = dispatch => ({
   setAppHeader(headerContent) {
     dispatch(setAppHeader(headerContent));
+  },
+
+  setPosts() {
+    dispatch(setPosts());
   },
 
   fetchPosts() {

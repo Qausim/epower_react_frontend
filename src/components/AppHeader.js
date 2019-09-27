@@ -5,8 +5,10 @@ import "../styles/app-header.css";
 
 const AppHeader = props => (
   <header className="app-header text--white">
-    <h1>{props.content.title}</h1>
-    <p>{props.content.published.toUpperCase()}</p>
+    <h1 className="text--aligned-center">{props.content.title}</h1>
+    <p className="text--aligned-center">
+      {props.content.published.toUpperCase()}
+    </p>
   </header>
 );
 
