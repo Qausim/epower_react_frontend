@@ -1,5 +1,7 @@
-import incrementPageNumber from "../actions/incrementPageNumber";
+import fetchPosts from "./fetchPosts";
+import pageNumberUtils from "../../utils/pageNumberUtils";
 
-export default () => (dispatch, getState) => {
-  dispatch(incrementPageNumber());
+export default () => async (dispatch, getState) => {
+  pageNumberUtils.setPageNumber(pageNumberUtils.getPageNumber() + 1);
+  dispatch(fetchPosts());
 };

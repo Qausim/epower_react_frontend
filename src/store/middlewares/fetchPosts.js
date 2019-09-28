@@ -1,9 +1,11 @@
 import setPosts from "../actions/setPosts";
+import showLoader from "../actions/showLoader";
+import pageNumberUtils from "../../utils/pageNumberUtils";
 
 export default () => async (dispatch, getState, api) => {
-  console.log(getState());
   try {
-    const { currentPage } = getState();
+    dispatch(showLoader(true));
+    const currentPage = pageNumberUtils.getPageNumber();
     const posts = await fetch(`${api}?per_page=6&page=${currentPage}`).then(
       res => res.json()
     );
@@ -11,4 +13,5 @@ export default () => async (dispatch, getState, api) => {
   } catch (error) {
     console.log("An error occured");
   }
+  dispatch(showLoader(false));
 };

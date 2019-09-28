@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 
 const NextButton = props => {
   return (
-    <div className="button-wrapper" onClick={this.props.goToNextPage}>
-      <button>Next</button>
-    </div>
+    <button className="button text--white" onClick={props.goToNextPage}>
+      Next
+    </button>
   );
 };
 

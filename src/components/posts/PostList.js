@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PostItem from "./PostItem";
 import "../../styles/post-list.css";
 import setAppHeader from "../../store/actions/setAppHeader";
-import setPosts from "../../store/actions/setPosts";
 import fetchPosts from "../../store/middlewares/fetchPosts";
 import Paginator from "./Paginator";
 
@@ -18,16 +17,19 @@ class PostList extends Component {
   render() {
     // Return template here
     const { posts } = this.props;
-    const postList = posts
-      ? posts.map(post => <PostItem key={post.id} post={post} />)
-      : [];
-    console.log(postList);
-    const template = postList.length ? (
-      postList
+    const template = posts.length ? (
+      <div className="post-list-wrapper">
+        <div className="post-list">
+          {posts.map(post => (
+            <PostItem key={post.id} post={post} />
+          ))}
+        </div>
+        <Paginator />
+      </div>
     ) : (
       <h3 className="empty-list">No post to view</h3>
     );
-    return <div className="post-list">{template}</div>;
+    return template;
   }
 }
 
@@ -36,17 +38,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setAppHeader(headerContent));
   },
 
-  setPosts() {
-    dispatch(setPosts());
-  },
-
   fetchPosts() {
     dispatch(fetchPosts());
   }
 });
 
-const mapStateToProps = (state, ownProps) => ({
-  posts: state.posts,
+const mapStateToProps = ({ posts }, ownProps) => ({
+  posts,
   ...ownProps
 });
 
