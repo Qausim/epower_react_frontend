@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import "../../styles/post-details.css";
 import fetchSinglePost from "../../store/middlewares/fetchSinglePost";
+import setCurrentPost from "../../store/actions/setCurrentPost";
 
 class PostDetails extends Component {
   componentDidMount() {
@@ -14,6 +15,11 @@ class PostDetails extends Component {
       fetchSinglePost
     } = this.props;
     fetchSinglePost(slug);
+  }
+
+  componentWillUnmount() {
+    const { setCurrentPost } = this.props;
+    setCurrentPost(null);
   }
 
   render() {
@@ -27,9 +33,8 @@ class PostDetails extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  currentPost: state.currentPost,
-  posts: state.posts,
+const mapStateToProps = ({ currentPost }, ownProps) => ({
+  currentPost,
   ...ownProps
 });
 
@@ -37,6 +42,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchSinglePost(slug) {
       dispatch(fetchSinglePost(slug));
+    },
+    setCurrentPost(post) {
+      dispatch(setCurrentPost(post));
     }
   };
 };

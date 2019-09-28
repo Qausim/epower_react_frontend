@@ -1,10 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import NextButton from "./NextButton";
 import PrevButton from "./PrevButton";
+import pageNumberUtils from "../../utils/pageNumberUtils";
 
-const Paginator = ({ currentPage }) => {
-  const hidePrevButton = currentPage === 1;
+const Paginator = () => {
+  const hidePrevButton = pageNumberUtils.getPageNumber() === 1;
   return (
     <div className="paginator-wrapper">
       <PrevButton hide={hidePrevButton} />
@@ -13,9 +14,4 @@ const Paginator = ({ currentPage }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  currentPage: state.currentPage,
-  ...ownProps
-});
-
-export default connect(mapStateToProps)(Paginator);
+export default Paginator;

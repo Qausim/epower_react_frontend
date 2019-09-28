@@ -9,6 +9,7 @@
   align-items: center;
   margin-bottom: 100px;
   padding: 32px;
+  box-sizing: border-box;
 }
 
 .app-header h1 {

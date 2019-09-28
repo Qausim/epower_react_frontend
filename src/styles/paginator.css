@@ -1,0 +1,20 @@
+.paginator-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 60%;
+}
+
+.paginator-wrapper .button {
+  width: 160px;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  background: var(--primary-color);
+  border: none;
+}
+
+.paginator-wrapper .hide {
+  display: none;
+}

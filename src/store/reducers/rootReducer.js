@@ -5,7 +5,7 @@ const initState = {
   },
   posts: [],
   currentPost: null,
-  currentPage: 1
+  showLoader: false
 };
 
 export default (state = initState, action) => {
@@ -16,10 +16,8 @@ export default (state = initState, action) => {
       return { ...state, posts: action.posts };
     case "SET_CURRENT_POST":
       return { ...state, currentPost: action.currentPost };
-    case "INCREMENT_PAGE_NUMBER":
-      return { ...state, currentPage: ++state.currentPage };
-    case "DECREMENT_PAGE_NUMBER":
-      return { ...state, currentPage: --state.currentPage };
+    case "SHOW_LOADER":
+      return { ...state, showLoader: action.showLoader };
     default:
       return state;
   }

@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import goToPrevPage from "../../store/middlewares/goToPrevPage";
+import "../../styles/paginator.css";
 
 const PrevButton = props => {
   const { hide } = props;
   return (
-    <div
-      className={hide ? "hide" : "button-wrapper"}
-      onClick={this.props.goToPrevPage}
+    <button
+      className={hide ? "hide" : "button text--white"}
+      onClick={props.goToPrevPage}
     >
-      <button>Next</button>
-    </div>
+      Previous
+    </button>
   );
 };
 
