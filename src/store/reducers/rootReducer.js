@@ -5,7 +5,8 @@ const initState = {
   },
   posts: [],
   currentPost: null,
-  showLoader: false
+  showLoader: false,
+  lastPageReached: false
 };
 
 export default (state = initState, action) => {
@@ -18,6 +19,8 @@ export default (state = initState, action) => {
       return { ...state, currentPost: action.currentPost };
     case "SHOW_LOADER":
       return { ...state, showLoader: action.showLoader };
+    case "SET_LAST_PAGE_REACHED":
+      return { ...state, lastPageReached: action.lastPageReached };
     default:
       return state;
   }

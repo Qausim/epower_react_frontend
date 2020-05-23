@@ -1,19 +1,27 @@
 .post-list-wrapper {
+  width: 100%;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .post-list {
-  width: 90%;
+  /* width: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 350px);
   grid-auto-rows: 1fr;
-  grid-gap: 40px;
+  grid-gap: 40px; */
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .post-list a {
   text-decoration: none;
   color: #000;
+  max-width: 350px;
+  margin: 20px;
 }

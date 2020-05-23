@@ -2,9 +2,12 @@ import React from "react";
 import goToNextPage from "../../store/middlewares/goToNextPage";
 import { connect } from "react-redux";
 
-const NextButton = props => {
+const NextButton = ({ hide, goToNextPage }) => {
   return (
-    <button className="button text--white" onClick={props.goToNextPage}>
+    <button
+      className={hide ? "hide" : "button text--white"}
+      onClick={goToNextPage}
+    >
       Next
     </button>
   );

@@ -18,18 +18,21 @@ class PostList extends Component {
     // Return template here
     const { posts } = this.props;
     const template = posts.length ? (
-      <div className="post-list-wrapper">
-        <div className="post-list">
-          {posts.map(post => (
-            <PostItem key={post.id} post={post} />
-          ))}
-        </div>
-        <Paginator />
+      <div className="post-list">
+        {posts.map(post => (
+          <PostItem key={post.id} post={post} />
+        ))}
       </div>
     ) : (
       <h3 className="empty-list">No post to view</h3>
     );
-    return template;
+
+    return (
+      <div className="post-list-wrapper">
+        {template}
+        <Paginator />
+      </div>
+    );
   }
 }
 
